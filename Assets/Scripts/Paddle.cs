@@ -30,15 +30,7 @@ public class Paddle : MonoBehaviour
 
     private float GetXPos()
     {
-        if (theAutoPlay.IsAutoPlayEnabled())
-        {
-            return theBall.transform.position.x;
-        }
-        else
-        {
-            return Input.mousePosition.x / Screen.width * ScreenWidthInUnits;
-        }
-            
+       return theAutoPlay.IsAutoPlayEnabled() ? theBall.transform.position.x : Input.mousePosition.x / Screen.width * ScreenWidthInUnits;
     }
     
 }
