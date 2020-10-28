@@ -9,10 +9,12 @@ public class GameSession : MonoBehaviour
     [Range(0.1f, 10f)] [SerializeField] private float gameSpeed = 1f;
     [SerializeField] private int pointsPerBlockDestroyed = 50;
     [SerializeField] private TextMeshProUGUI scoreText;
-    
+
     //state variables
     [SerializeField] private int currentScore = 0;
 
+    private AutoPlay theAutoPlay;
+    
     private void Awake()
     {
         int gameStatusCount = FindObjectsOfType<GameSession>().Length;
@@ -48,4 +50,5 @@ public class GameSession : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }
