@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
     [Range(0.1f, 10f)] [SerializeField] private float gameSpeed = 1f;
     [SerializeField] private int pointsPerBlockDestroyed = 50;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI gameSpeedText;
 
     //state variables
     [SerializeField] private int currentScore = 0;
@@ -38,6 +39,10 @@ public class GameSession : MonoBehaviour
     void Update()
     {
         Time.timeScale = gameSpeed;
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            gameSpeedIncrease();
+        }
     }
 
     public void AddToScore()
@@ -49,6 +54,20 @@ public class GameSession : MonoBehaviour
     public void ResetGame()
     {
         Destroy(gameObject);
+    }
+
+    public void gameSpeedIncrease()
+    {
+        if (gameSpeed < 10)
+        {
+            gameSpeed++;
+            gameSpeedText.text = gameSpeed.ToString() + "x";
+        }
+        else
+        {
+            gameSpeed = 1;
+            gameSpeedText.text = gameSpeed.ToString() + "x";
+        }
     }
 
 }
